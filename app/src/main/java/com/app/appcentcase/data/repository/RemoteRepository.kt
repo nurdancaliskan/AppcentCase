@@ -1,9 +1,9 @@
 package com.app.appcentcase.data.repository
 
 import com.app.appcentcase.data.model.ArticleModel
-import retrofit2.Call
+import com.app.appcentcase.utils.Resource
 
 interface RemoteRepository {
 
-    suspend fun searchArticle(word: String): Call<ArticleModel>
+    suspend fun searchArticle(word: String): Resource<ArticleModel?>
 }

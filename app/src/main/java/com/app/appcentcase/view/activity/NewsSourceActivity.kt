@@ -1,12 +1,25 @@
 package com.app.appcentcase.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.app.appcentcase.R
+import androidx.appcompat.app.AppCompatActivity
+import com.app.appcentcase.databinding.ActivityNewsSourceBinding
 
 class NewsSourceActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityNewsSourceBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_news_source)
+        binding = ActivityNewsSourceBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        initListeners()
+        val source = intent.getStringExtra("source")
+        source?.let { binding.webView.loadUrl(it) }
+    }
+
+    private fun initListeners() {
+        binding.backBtn.setOnClickListener {
+            finish()
+        }
     }
 }
